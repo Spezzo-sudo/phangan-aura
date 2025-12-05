@@ -51,3 +51,20 @@ public/videos/
 
 # Supabase
 supabase/.temp
+
+# Development documentation (keep locally, exclude from repo)
+*.md
+!README.md
+
+# Standalone SQL files (migrations are tracked in supabase/migrations/)
+*.sql
+!supabase/migrations/*.sql
+
+# Debug and test files
+debug*.js
+test-*.js
+debug_data.json
+db-check.mjs
+
+# Lock files (optional - saves space)
+package-lock.json

@@ -15,7 +15,7 @@ dist/
 build/
 out/
 
-# Ignore lock files (optional, but saves context)
+# Ignore lock files (saves massive context space)
 package-lock.json
 yarn.lock
 pnpm-lock.yaml
@@ -32,8 +32,21 @@ pnpm-lock.yaml
 .vscode/
 .idea/
 
-# Ignore documentation assets if any
-docs/images/
+# Ignore all documentation files except README
+*.md
+!README.md
+
+# Ignore all SQL files (migrations are in supabase/migrations which claude doesn't need)
+*.sql
+
+# Ignore debug and test scripts
+debug*.js
+test-*.js
+db-check.mjs
+debug_data.json
+
+# Ignore cursorrules (editor specific)
+.cursorrules
 
 # Ignore specific large files
 *.map
