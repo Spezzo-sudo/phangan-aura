@@ -1,0 +1,336 @@
+{
+    "Navbar": {
+        "home": "Startseite",
+        "services": "Dienstleistungen",
+        "shop": "Shop",
+        "about": "Über uns",
+        "book_now": "Jetzt Buchen",
+        "sign_in": "Anmelden",
+        "dashboard": "Dashboard",
+        "my_bookings": "Meine Buchungen",
+        "sign_out": "Abmelden",
+        "cart": "Warenkorb"
+    },
+    "SEO": {
+        "title": "Phangan Aura | Premium Mobile Wellness",
+        "description": "Luxuriöse mobile Massage- und Schönheitsbehandlungen auf Koh Phangan. Wir bringen das Spa in Ihre Villa."
+    },
+    "Booking": {
+        "steps": {
+            "service": "Service",
+            "staff": "Mitarbeiter",
+            "location": "Ort",
+            "time": "Zeit",
+            "extras": "Extras",
+            "confirm": "Bestätigen"
+        },
+        "next": "Weiter",
+        "back": "Zurück",
+        "select_service": "Service wählen",
+        "choose_treatment": "Wählen Sie Ihre Behandlung",
+        "available_treatments": "Verfügbare Behandlungen",
+        "no_services": "Keine Services in dieser Kategorie gefunden.",
+        "categories": {
+            "massage": "Massage",
+            "nails": "Nägel",
+            "beauty": "Schönheit"
+        },
+        "duration_min": "{min} Min",
+        "price_thb": "{price} THB",
+        "staff_selection": {
+            "title": "Wählen Sie Ihren Spezialisten",
+            "subtitle": "Wählen Sie einen Profi für Ihre {service}",
+            "no_staff": "Keine Spezialisten verfügbar",
+            "no_staff_sub": "Versuchen Sie einen anderen Service oder schauen Sie später wieder vorbei.",
+            "role": "Wellness-Spezialist",
+            "default_bio": "Erfahrener Spezialist, der sich Ihrer Entspannung und Ihrem Wohlbefinden widmet.",
+            "available_today": "Heute verfügbar"
+        },
+        "location_selection": {
+            "title": "Wohin sollen wir kommen?",
+            "subtitle": "Wir bringen das Spa in Ihre Villa oder Ihr Hotel",
+            "address_label": "Adresse / Hotelname",
+            "address_placeholder": "z.B. Sunset Villa, Haad Rin...",
+            "notes_label": "Ortsnotizen (Optional)",
+            "notes_placeholder": "z.B. Zimmer 102, Torcode 1234...",
+            "use_current_location": "Aktuellen Standort verwenden",
+            "getting_location": "Standort wird ermittelt..."
+        },
+        "datetime_selection": {
+            "title": "Datum & Zeit wählen",
+            "subtitle": "Wann möchten Sie Ihre Sitzung?",
+            "morning": "Morgen",
+            "afternoon": "Nachmittag",
+            "evening": "Abend",
+            "fully_booked": "Ausgebucht"
+        },
+        "addons_selection": {
+            "title": "Erweitern Sie Ihr Erlebnis",
+            "subtitle": "Fügen Sie optionale Extras zu Ihrer Behandlung hinzu",
+            "add_for": "Hinzufügen für {price}",
+            "added": "Hinzugefügt",
+            "no_addons": "Keine Extras für diesen Service verfügbar."
+        },
+        "confirmation": {
+            "title": "Buchung bestätigen",
+            "subtitle": "Bitte überprüfen Sie Ihre Details",
+            "service": "Service",
+            "date_time": "Datum & Zeit",
+            "location": "Ort",
+            "specialist": "Spezialist",
+            "payment_method": "Zahlungsmethode",
+            "payment_cash": "Barzahlung bei Ankunft",
+            "payment_card": "Online zahlen (Stripe)",
+            "total_price": "Gesamtpreis",
+            "confirm_btn": "Buchung bestätigen",
+            "contact_details": "Kontaktdaten",
+            "name": "Vollständiger Name",
+            "email": "E-Mail-Adresse",
+            "phone": "Telefonnummer",
+            "login_to_autofill": "Anmelden zum Ausfüllen"
+        }
+    },
+    "Common": {
+        "loading": "Lädt...",
+        "error": "Etwas ist schiefgelaufen"
+    },
+    "Hero": {
+        "badge": "Koh Phangans Premium Mobiles Spa",
+        "title": "Ihr privates Spa-Erlebnis <br></br> <span>direkt in Ihrer Villa.</span>",
+        "subtitle": "Entfliehen Sie dem Alltag. Genießen Sie professionelle Massagen und Beauty-Behandlungen in Ihrer privaten Atmosphäre.",
+        "cta_book": "Termin buchen",
+        "cta_explore": "Angebote ansehen"
+    },
+    "About": {
+        "hero_title": "Wellness geliefert",
+        "hero_subtitle": "Phangan Aura bringt die besten Therapeuten der Insel direkt in Ihre Villa. Erleben Sie luxuriöse Spa-Behandlungen in der Privatsphäre und dem Komfort Ihrer eigenen Räume.",
+        "philosophy_title": "Unsere Philosophie",
+        "philosophy_text_1": "Wir glauben, dass wahre Entspannung geschieht, wenn Sie sich nicht beeilen müssen. Kein Verkehr, keine Wartezimmer, nur pure Glückseligkeit in Ihrem persönlichen Rückzugsort. Unser Team besteht aus zertifizierten, erfahrenen Therapeuten, die sich leidenschaftlich für Heilung und Wohlbefinden einsetzen.",
+        "philosophy_text_2": "Von traditioneller Thai-Massage bis hin zu verjüngenden Gesichtsbehandlungen verwenden wir nur hochwertige Bio-Produkte, die lokal von Koh Phangan bezogen werden.",
+        "legal_notice": "Rechtlicher Hinweis"
+    },
+    "ServicesPage": {
+        "badge": "Unser Menü",
+        "title": "Premium Wellness-Angebote",
+        "subtitle": "Wählen Sie eine Behandlungskategorie, um Ihre Reise zur Entspannung zu beginnen. Wir bringen alles, was für ein professionelles Spa-Erlebnis benötigt wird, zu Ihnen.",
+        "items": {
+            "massage": {
+                "title": "Traditionelle Massage",
+                "description": "Alte Heiltechniken zur Wiederherstellung des Gleichgewichts und zum Lösen von Verspannungen. Von Thai- bis Ölmassage.",
+                "price": "Ab 500 THB"
+            },
+            "nails": {
+                "title": "Nagelpflege",
+                "description": "Premium-Maniküre und Pediküre mit hochwertigen Produkten für dauerhaften Glanz.",
+                "price": "Ab 400 THB"
+            },
+            "beauty": {
+                "title": "Schönheitspakete",
+                "description": "Komplette Verjüngungspakete, die Massage, Peeling und Gesichtsbehandlungen kombinieren.",
+                "price": "Ab 1200 THB"
+            }
+        },
+        "book_now": "Jetzt buchen"
+    },
+    "Auth": {
+        "login": {
+            "title": "Willkommen zurück",
+            "subtitle": "Melden Sie sich an, um Ihre Buchungen zu verwalten",
+            "email_label": "E-Mail-Adresse",
+            "password_label": "Passwort",
+            "submit_btn": "Anmelden",
+            "loading_btn": "Anmelden...",
+            "no_account": "Sie haben kein Konto?",
+            "register_link": "Registrieren",
+            "error_generic": "Authentifizierung fehlgeschlagen",
+            "success": "Willkommen zurück!"
+        },
+        "register": {
+            "title": "Konto erstellen",
+            "subtitle": "Erleben Sie Premium-Wellness mit uns",
+            "name_label": "Vollständiger Name",
+            "email_label": "E-Mail-Adresse",
+            "phone_label": "Telefonnummer",
+            "password_label": "Passwort",
+            "confirm_password_label": "Passwort bestätigen",
+            "submit_btn": "Konto erstellen",
+            "loading_btn": "Konto wird erstellt...",
+            "has_account": "Sie haben bereits ein Konto?",
+            "login_link": "Anmelden",
+            "error_password_match": "Passwörter stimmen nicht überein",
+            "success": "Konto erfolgreich erstellt!"
+        }
+    },
+    "Shop": {
+        "title": "Insel-Essentials",
+        "subtitle": "Ausgewählte Naturprodukte, um die Phangan Aura in Ihr Zuhause zu bringen."
+    },
+    "Profile": {
+        "title": "Mein Profil",
+        "welcome": "Willkommen zurück, {name}!",
+        "account_type": "Kontotyp",
+        "customer": "Kunde",
+        "bookings_title": "Meine Buchungen",
+        "no_bookings": "Noch keine Buchungen",
+        "book_first": "Buchen Sie Ihre erste Wellness-Behandlung!",
+        "book_now": "Jetzt buchen",
+        "upcoming": "Bevorstehend",
+        "no_upcoming": "Keine bevorstehenden Buchungen.",
+        "past": "Vergangene",
+        "no_past": "Keine vergangenen Buchungen.",
+        "cancel_success": "Buchung erfolgreich storniert.",
+        "cancel_fail": "Stornierung fehlgeschlagen"
+    },
+    "Checkout": {
+        "title": "Kasse",
+        "back_to_shop": "Zurück zum Shop",
+        "free_delivery_title": "💡 Möchten Sie kostenlose Lieferung?",
+        "free_delivery_text": "Buchen Sie eine Massage und fügen Sie diese Produkte als Extras hinzu, um <strong>bar bei Lieferung</strong> ohne Liefergebühr zu zahlen!",
+        "book_massage_btn": "→ Stattdessen Massage buchen",
+        "contact_info": "Kontaktinformationen",
+        "name_label": "Vollständiger Name *",
+        "email_label": "E-Mail *",
+        "phone_label": "Telefon (Optional)",
+        "address_label": "Lieferadresse (Optional)",
+        "address_placeholder": "Villaname, Zimmernummer oder Abholort auf Koh Phangan",
+        "order_summary": "Bestellübersicht",
+        "total": "Gesamt",
+        "secure_checkout": "Sichere Bezahlung über Stripe",
+        "pay_btn": "Zahlen {amount} ฿",
+        "free_delivery_note": "Kostenlose Lieferung auf Koh Phangan",
+        "alert_fill_info": "Bitte füllen Sie Name und E-Mail aus",
+        "alert_fail": "Kasse fehlgeschlagen. Bitte versuchen Sie es erneut."
+    },
+    "StaffDashboard": {
+        "title": "Mitarbeiter-Dashboard",
+        "welcome": "Willkommen zurück, {name}",
+        "role": "Rolle: {role}",
+        "tabs": {
+            "schedule": "Mein Zeitplan",
+            "earnings": "Meine Einnahmen",
+            "services": "Services verwalten"
+        },
+        "modals": {
+            "confirm_title": "Buchung bestätigen",
+            "confirm_msg": "Möchtest du diese Buchung wirklich bestätigen?",
+            "reject_title": "Buchung ablehnen",
+            "reject_msg": "Möchtest du diese Anfrage wirklich ablehnen? Der Kunde wird benachrichtigt.",
+            "complete_title": "Behandlung abschließen",
+            "complete_msg": "Bist du sicher, dass die Behandlung erfolgreich beendet wurde?",
+            "cancel_title": "Buchung stornieren",
+            "cancel_msg": "Achtung: Diese Buchung ist bereits bestätigt. Möchtest du sie wirklich stornieren?",
+            "confirm_btn": "Ja, bestätigen",
+            "proceed_btn": "Ja, fortfahren",
+            "cancel_btn": "Abbrechen"
+        },
+        "success_update": "Services erfolgreich aktualisiert!",
+        "error_save": "Fehler beim Speichern: {error}",
+        "schedule": {
+            "title": "Bevorstehende Buchungen",
+            "active": "{count} aktiv",
+            "no_bookings": "Keine bevorstehenden Buchungen gefunden.",
+            "free_time": "Genießen Sie Ihre Freizeit!",
+            "groups": {
+                "today": "Heute",
+                "tomorrow": "Morgen",
+                "upcoming": "Demnächst"
+            }
+        }
+    },
+    "AdminDashboard": {
+        "title": "Admin-Dashboard",
+        "subtitle": "Hauptkontrollzentrum.",
+        "stats": {
+            "total_users": "Benutzer gesamt",
+            "staff": "Mitarbeiter"
+        },
+        "tabs": {
+            "users": "Benutzer & Personal",
+            "bookings": "Buchungen",
+            "products": "Produkte",
+            "accounting": "Buchhaltung",
+            "payouts": "Auszahlungen",
+            "finance": "Finanzen",
+            "loans": "Kredite",
+            "settings": "Einstellungen"
+        },
+        "users": {
+            "title": "Benutzerliste",
+            "table": {
+                "user": "Benutzer",
+                "email": "E-Mail",
+                "role": "Aktuelle Rolle",
+                "actions": "Aktionen"
+            },
+            "manage_services": "Services verwalten",
+            "seed_btn": "Datenbank mit Services füllen",
+            "seeding": "Fülle...",
+            "seed_success": "Services erfolgreich angelegt!",
+            "seed_error": "Datenbank hat bereits {count} Services."
+        }
+    },
+    "Legal": {
+        "imprint": {
+            "title": "Impressum",
+            "company_info": "Unternehmensangaben",
+            "contact": "Kontakt",
+            "director": "Geschäftsführer",
+            "disclaimer": "Haftungsausschluss",
+            "disclaimer_text": "Trotz sorgfältiger inhaltlicher Kontrolle übernehmen wir keine Haftung für die Inhalte externer Links. Für den Inhalt der verlinkten Seiten sind ausschließlich deren Betreiber verantwortlich."
+        },
+        "privacy": {
+            "title": "Datenschutzerklärung",
+            "intro": "Wir nehmen den Schutz Ihrer persönlichen Daten sehr ernst.",
+            "data_collection": "Datenerhebung",
+            "data_collection_text": "Wir erheben personenbezogene Daten, die Sie uns bei der Buchung oder Kontaktaufnahme mitteilen.",
+            "usage": "Verwendung der Daten",
+            "usage_text": "Ihre Daten werden ausschließlich zur Abwicklung Ihrer Buchungen und zur Verbesserung unseres Services verwendet.",
+            "cookies": "Cookies",
+            "cookies_text": "Wir verwenden Cookies, um die Benutzererfahrung zu verbessern.",
+            "third_party": "Dritte",
+            "third_party_text": "Wir geben Ihre Daten nicht an Dritte weiter, es sei denn, dies ist für den Service erforderlich (z.B. Zahlungsabwicklung)."
+        },
+        "terms": {
+            "title": "Allgemeine Geschäftsbedingungen",
+            "intro": "AGB für Phangan Aura.",
+            "bookings": "Buchungen",
+            "bookings_text": "Buchungen sind nach Bestätigung verbindlich.",
+            "cancellations": "Stornierungen",
+            "cancellations_text": "Stornierungen, die weniger als 24 Stunden im Voraus erfolgen, können vollständig berechnet werden.",
+            "payments": "Zahlungen",
+            "payments_text": "Zahlungen können per Barzahlung oder Kreditkarte erfolgen.",
+            "liability": "Haftung",
+            "liability_text": "Wir haften nicht für Verletzungen oder Schäden, es sei denn, sie wurden durch grobe Fahrlässigkeit verursacht."
+        }
+    },
+    "FAQ": {
+        "title": "Häufig gestellte Fragen",
+        "subtitle": "Alles, was Sie über unseren mobilen Spa-Service wissen müssen.",
+        "questions": {
+            "how_it_works": {
+                "q": "Wie funktioniert der mobile Service?",
+                "a": "Sie buchen online, und unsere Therapeuten kommen mit der gesamten Ausrüstung (Massageliege, Handtücher, Öle) zu Ihrer Villa oder Ihrem Hotel."
+            },
+            "areas": {
+                "q": "Welche Gebiete bedienen Sie?",
+                "a": "Wir bedienen die gesamte Insel Koh Phangan."
+            },
+            "payment": {
+                "q": "Wie kann ich bezahlen?",
+                "a": "Sie können sicher online per Kreditkarte oder bar direkt beim Therapeuten bezahlen."
+            },
+            "cancellation": {
+                "q": "Wie sind die Stornierungsbedingungen?",
+                "a": "Sie können bis zu 24 Stunden vor Ihrem Termin kostenlos stornieren."
+            },
+            "preparation": {
+                "q": "Muss ich etwas vorbereiten?",
+                "a": "Nein, wir bringen alles mit. Stellen Sie nur sicher, dass genügend Platz für eine Massageliege vorhanden ist."
+            },
+            "products": {
+                "q": "Welche Produkte verwenden Sie?",
+                "a": "Wir verwenden wann immer möglich hochwertige, organische und lokal bezogene Produkte."
+            }
+        }
+    }
+}

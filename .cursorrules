@@ -1,0 +1,51 @@
+# Project Rules & Context for Phangan Aura
+
+## 1. Tech Stack & Core Libraries
+- **Framework**: Next.js 14+ (App Router).
+- **Language**: TypeScript (Strict mode).
+- **Styling**: Tailwind CSS (Utility-first).
+- **Animation**: Framer Motion.
+- **Backend/Auth**: Supabase (PostgreSQL, Auth, Row Level Security).
+- **State Management**: Zustand (for global client state like Booking Wizard).
+- **Icons**: Lucide React.
+- **Date Handling**: date-fns.
+
+## 2. Design System (Aura Theme)
+- **Colors**:
+  - Primary Teal: `text-aura-teal` (#2A9D8F), `bg-aura-teal`.
+  - Background Sand: `bg-aura-sand` (#FDFBF7).
+  - Gold Accent: `text-aura-gold` (#D4A373).
+  - Text: Dark Gray (#111827) for headings, Muted Gray (#4B5563) for body.
+- **Fonts**:
+  - Headings: `font-serif` (Playfair Display).
+  - Body: `font-sans` (Outfit).
+- **UI Style**:
+  - Glassmorphism: `bg-white/80 backdrop-blur-md`.
+  - Rounded corners: `rounded-2xl` or `rounded-3xl` for cards, `rounded-full` for buttons.
+  - Shadows: Soft, diffused shadows (`shadow-xl`).
+
+## 3. Coding Guidelines
+- **Components**:
+  - Use Functional Components with named exports.
+  - Keep components small and focused.
+  - Use `cn()` utility for class merging.
+- **Supabase**:
+  - Use typed clients (`createClient` from `@/lib/supabase/client` or `server`).
+  - Always use generated types from `@/types/database`.
+  - NEVER use `any` for database rows.
+- **Booking Wizard**:
+  - State is managed in `useBookingStore`.
+  - Steps are separate components in `@/components/booking/`.
+  - Data is fetched fresh from Supabase in each step where needed.
+
+## 4. Project Structure
+- `/src/app`: Pages and Layouts.
+- `/src/components`: Reusable UI components.
+- `/src/lib`: Utilities, Supabase clients, Stores.
+- `/src/types`: TypeScript definitions.
+
+## 5. Agent Behavior
+- **Check First**: Before creating a file, check if it exists.
+- **Don't Break**: When editing, ensure imports remain intact.
+- **Verify**: After major changes, suggest a verification step (screenshot or manual test).
+- **Security**: Never hardcode secrets. Use environment variables.

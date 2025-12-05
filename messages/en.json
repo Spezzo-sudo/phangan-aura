@@ -1,0 +1,336 @@
+{
+    "Navbar": {
+        "home": "Home",
+        "services": "Services",
+        "shop": "Shop",
+        "about": "About",
+        "book_now": "Book Now",
+        "sign_in": "Sign In",
+        "dashboard": "Dashboard",
+        "my_bookings": "My Bookings",
+        "sign_out": "Sign Out",
+        "cart": "Cart"
+    },
+    "SEO": {
+        "title": "Phangan Aura | Premium Mobile Wellness",
+        "description": "Luxury mobile massage and beauty services on Koh Phangan. We bring the spa to your villa."
+    },
+    "Booking": {
+        "steps": {
+            "service": "Service",
+            "staff": "Staff",
+            "location": "Location",
+            "time": "Time",
+            "extras": "Extras",
+            "confirm": "Confirm"
+        },
+        "next": "Next Step",
+        "back": "Back",
+        "select_service": "Select Service",
+        "choose_treatment": "Choose your treatment type",
+        "available_treatments": "Available Treatments",
+        "no_services": "No services found for this category.",
+        "categories": {
+            "massage": "Massage",
+            "nails": "Nails",
+            "beauty": "Beauty"
+        },
+        "duration_min": "{min} min",
+        "price_thb": "{price} THB",
+        "staff_selection": {
+            "title": "Choose Your Specialist",
+            "subtitle": "Select a professional for your {service}",
+            "no_staff": "No specialists available",
+            "no_staff_sub": "Try selecting a different service or check back later.",
+            "role": "Wellness Specialist",
+            "default_bio": "Experienced specialist dedicated to your relaxation and well-being.",
+            "available_today": "Available Today"
+        },
+        "location_selection": {
+            "title": "Where should we come?",
+            "subtitle": "We bring the spa to your villa or hotel",
+            "address_label": "Address / Hotel Name",
+            "address_placeholder": "e.g. Sunset Villa, Haad Rin...",
+            "notes_label": "Location Notes (Optional)",
+            "notes_placeholder": "e.g. Room 102, Gate code 1234...",
+            "use_current_location": "Use Current Location",
+            "getting_location": "Getting location..."
+        },
+        "datetime_selection": {
+            "title": "Select Date & Time",
+            "subtitle": "When would you like your session?",
+            "morning": "Morning",
+            "afternoon": "Afternoon",
+            "evening": "Evening",
+            "fully_booked": "Fully Booked"
+        },
+        "addons_selection": {
+            "title": "Enhance Your Experience",
+            "subtitle": "Add optional extras to your treatment",
+            "add_for": "Add for {price}",
+            "added": "Added",
+            "no_addons": "No addons available for this service."
+        },
+        "confirmation": {
+            "title": "Confirm Booking",
+            "subtitle": "Please review your details",
+            "service": "Service",
+            "date_time": "Date & Time",
+            "location": "Location",
+            "specialist": "Specialist",
+            "payment_method": "Payment Method",
+            "payment_cash": "Cash on Arrival",
+            "payment_card": "Pay Online (Stripe)",
+            "total_price": "Total Price",
+            "confirm_btn": "Confirm Booking",
+            "contact_details": "Contact Details",
+            "name": "Full Name",
+            "email": "Email Address",
+            "phone": "Phone Number",
+            "login_to_autofill": "Log in to autofill"
+        }
+    },
+    "Common": {
+        "loading": "Loading...",
+        "error": "Something went wrong"
+    },
+    "Hero": {
+        "badge": "Koh Phangan's Premium Mobile Spa",
+        "title": "Wellness that comes <br></br> <span>to your villa.</span>",
+        "subtitle": "Escape the ordinary. Experience professional massages, beauty treatments, and holistic healing in the privacy of your own space.",
+        "cta_book": "Book Treatment",
+        "cta_explore": "Explore Services"
+    },
+    "About": {
+        "hero_title": "Wellness Delivered",
+        "hero_subtitle": "Phangan Aura brings the island's best therapists directly to your villa. Experience luxury spa treatments in the privacy and comfort of your own space.",
+        "philosophy_title": "Our Philosophy",
+        "philosophy_text_1": "We believe that true relaxation happens when you don't have to rush. No traffic, no waiting rooms, just pure bliss in your personal sanctuary. Our team consists of certified, experienced therapists who are passionate about healing and well-being.",
+        "philosophy_text_2": "From traditional Thai massage to rejuvenating facials, we use only premium organic products sourced locally from Koh Phangan.",
+        "legal_notice": "Legal Notice"
+    },
+    "ServicesPage": {
+        "badge": "Our Menu",
+        "title": "Premium Wellness Services",
+        "subtitle": "Select a treatment category to begin your journey to relaxation. We bring everything needed for a professional spa experience to your location.",
+        "items": {
+            "massage": {
+                "title": "Traditional Massage",
+                "description": "Ancient healing techniques to restore balance and relieve tension. From Thai to Oil massage.",
+                "price": "From 500 THB"
+            },
+            "nails": {
+                "title": "Nail Care",
+                "description": "Premium manicure and pedicure services using high-quality products for lasting shine.",
+                "price": "From 400 THB"
+            },
+            "beauty": {
+                "title": "Beauty Packages",
+                "description": "Complete rejuvenation packages combining massage, scrub, and facial treatments.",
+                "price": "From 1200 THB"
+            }
+        },
+        "book_now": "Book Now"
+    },
+    "Auth": {
+        "login": {
+            "title": "Welcome Back",
+            "subtitle": "Sign in to manage your bookings",
+            "email_label": "Email Address",
+            "password_label": "Password",
+            "submit_btn": "Sign In",
+            "loading_btn": "Signing in...",
+            "no_account": "Don't have an account?",
+            "register_link": "Sign up",
+            "error_generic": "Authentication failed",
+            "success": "Welcome back!"
+        },
+        "register": {
+            "title": "Create Account",
+            "subtitle": "Join us for a premium wellness experience",
+            "name_label": "Full Name",
+            "email_label": "Email Address",
+            "phone_label": "Phone Number",
+            "password_label": "Password",
+            "confirm_password_label": "Confirm Password",
+            "submit_btn": "Create Account",
+            "loading_btn": "Creating account...",
+            "has_account": "Already have an account?",
+            "login_link": "Sign in",
+            "error_password_match": "Passwords do not match",
+            "success": "Account created successfully!"
+        }
+    },
+    "Shop": {
+        "title": "Island Essentials",
+        "subtitle": "Curated natural products to bring the Phangan Aura into your home."
+    },
+    "Profile": {
+        "title": "My Profile",
+        "welcome": "Welcome back, {name}!",
+        "account_type": "Account Type",
+        "customer": "Customer",
+        "bookings_title": "My Bookings",
+        "no_bookings": "No bookings yet",
+        "book_first": "Book your first wellness treatment!",
+        "book_now": "Book Now",
+        "upcoming": "Upcoming",
+        "no_upcoming": "No upcoming bookings.",
+        "past": "Past History",
+        "no_past": "No past bookings.",
+        "cancel_success": "Booking cancelled successfully.",
+        "cancel_fail": "Failed to cancel booking"
+    },
+    "Checkout": {
+        "title": "Checkout",
+        "back_to_shop": "Back to Shop",
+        "free_delivery_title": "💡 Want free delivery?",
+        "free_delivery_text": "Book a massage and add these products as add-ons to <strong>pay cash on delivery</strong> with zero delivery fee!",
+        "book_massage_btn": "→ Book a Massage Instead",
+        "contact_info": "Contact Information",
+        "name_label": "Full Name *",
+        "email_label": "Email *",
+        "phone_label": "Phone (Optional)",
+        "address_label": "Delivery Address (Optional)",
+        "address_placeholder": "Villa name, room number, or pick-up location on Koh Phangan",
+        "order_summary": "Order Summary",
+        "total": "Total",
+        "secure_checkout": "Secure checkout powered by Stripe",
+        "pay_btn": "Pay {amount} ฿",
+        "free_delivery_note": "Free delivery on Koh Phangan",
+        "alert_fill_info": "Please fill in your name and email",
+        "alert_fail": "Checkout failed. Please try again."
+    },
+    "StaffDashboard": {
+        "title": "Staff Dashboard",
+        "welcome": "Welcome back, {name}",
+        "role": "Role: {role}",
+        "tabs": {
+            "schedule": "My Schedule",
+            "earnings": "My Earnings",
+            "services": "Manage Services"
+        },
+        "modals": {
+            "confirm_title": "Confirm Booking",
+            "confirm_msg": "Are you sure you want to confirm this booking?",
+            "reject_title": "Reject Booking",
+            "reject_msg": "Are you sure you want to reject this request? The customer will be notified.",
+            "complete_title": "Complete Treatment",
+            "complete_msg": "Are you sure the treatment was successfully completed?",
+            "cancel_title": "Cancel Booking",
+            "cancel_msg": "Warning: This booking is already confirmed. Are you sure you want to cancel it?",
+            "confirm_btn": "Yes, confirm",
+            "proceed_btn": "Yes, proceed",
+            "cancel_btn": "Cancel"
+        },
+        "success_update": "Services updated successfully!",
+        "error_save": "Error saving: {error}",
+        "schedule": {
+            "title": "Upcoming Bookings",
+            "active": "{count} active",
+            "no_bookings": "No upcoming bookings found.",
+            "free_time": "Enjoy your free time!",
+            "groups": {
+                "today": "Today",
+                "tomorrow": "Tomorrow",
+                "upcoming": "Upcoming"
+            }
+        }
+    },
+    "AdminDashboard": {
+        "title": "Admin Dashboard",
+        "subtitle": "Master control panel.",
+        "stats": {
+            "total_users": "Total Users",
+            "staff": "Staff"
+        },
+        "tabs": {
+            "users": "Users & Staff",
+            "bookings": "Bookings",
+            "products": "Products",
+            "accounting": "Accounting",
+            "payouts": "Staff Payouts",
+            "finance": "Finance",
+            "loans": "Loan Tracker",
+            "settings": "Settings"
+        },
+        "users": {
+            "title": "User List",
+            "table": {
+                "user": "User",
+                "email": "Email",
+                "role": "Current Role",
+                "actions": "Actions"
+            },
+            "manage_services": "Manage Services",
+            "seed_btn": "Seed Database with Services",
+            "seeding": "Seeding...",
+            "seed_success": "Services seeded successfully!",
+            "seed_error": "Database already has {count} services."
+        }
+    },
+    "Legal": {
+        "imprint": {
+            "title": "Imprint",
+            "company_info": "Company Information",
+            "contact": "Contact",
+            "director": "Managing Director",
+            "disclaimer": "Disclaimer",
+            "disclaimer_text": "Despite careful content control, we assume no liability for the content of external links. The operators of the linked pages are solely responsible for their content."
+        },
+        "privacy": {
+            "title": "Privacy Policy",
+            "intro": "We take the protection of your personal data very seriously.",
+            "data_collection": "Data Collection",
+            "data_collection_text": "We collect personal data that you provide to us when booking or contacting us.",
+            "usage": "Usage of Data",
+            "usage_text": "Your data is used solely for processing your bookings and improving our service.",
+            "cookies": "Cookies",
+            "cookies_text": "We use cookies to improve the user experience.",
+            "third_party": "Third Parties",
+            "third_party_text": "We do not share your data with third parties unless necessary for the service (e.g., payment processing)."
+        },
+        "terms": {
+            "title": "Terms of Service",
+            "intro": "General Terms and Conditions for Phangan Aura.",
+            "bookings": "Bookings",
+            "bookings_text": "Bookings are binding once confirmed.",
+            "cancellations": "Cancellations",
+            "cancellations_text": "Cancellations made less than 24 hours in advance may be charged fully.",
+            "payments": "Payments",
+            "payments_text": "Payments can be made via Cash or Credit Card.",
+            "liability": "Liability",
+            "liability_text": "We are not liable for any injuries or damages unless caused by gross negligence."
+        }
+    },
+    "FAQ": {
+        "title": "Frequently Asked Questions",
+        "subtitle": "Everything you need to know about our mobile spa service.",
+        "questions": {
+            "how_it_works": {
+                "q": "How does the mobile service work?",
+                "a": "You book online, and our therapists come to your villa or hotel with all necessary equipment (massage table, towels, oils)."
+            },
+            "areas": {
+                "q": "Which areas do you serve?",
+                "a": "We serve the entire island of Koh Phangan."
+            },
+            "payment": {
+                "q": "How can I pay?",
+                "a": "You can pay securely online via credit card or in cash directly to the therapist."
+            },
+            "cancellation": {
+                "q": "What is your cancellation policy?",
+                "a": "You can cancel for free up to 24 hours before your appointment."
+            },
+            "preparation": {
+                "q": "Do I need to prepare anything?",
+                "a": "No, we bring everything. Just ensure there is enough space for a massage table."
+            },
+            "products": {
+                "q": "What products do you use?",
+                "a": "We use high-quality, organic, and locally sourced products whenever possible."
+            }
+        }
+    }
+}
