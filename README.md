@@ -34,3 +34,9 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+## Providing Supabase data for review
+
+If you need to share your Supabase schema, policies, or sample data for a holistic review, follow the steps in [`docs/SUPABASE_DATA_GUIDE.md`](docs/SUPABASE_DATA_GUIDE.md). The guide explains how to export a sanitized schema, create synthetic seed data, and share a redacted `.env.example` without exposing production secrets.
+
+For convenience, the repo also includes an anonymized sample dump plus hardened RLS policies in [`docs/supabase-sample-data.sql`](docs/supabase-sample-data.sql) that you can load into a local Supabase instance for end-to-end review.

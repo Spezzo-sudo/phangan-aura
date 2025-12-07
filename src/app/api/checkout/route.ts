@@ -1,14 +1,13 @@
 import { NextRequest, NextResponse } from 'next/server';
-import Stripe from 'stripe';
+import { createAdminClient } from '@/lib/supabase/admin';
 import { createClient } from '@/lib/supabase/server';
-
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'dummy_key_for_build', {
-    apiVersion: '2024-10-28.acacia' as any,
-});
+import { getStripeClient } from '@/lib/stripe';
 
 export async function POST(request: NextRequest) {
     try {
         const supabase = await createClient();
+        const adminClient = createAdminClient();
+        const stripe = getStripeClient();
 
         // Get current user
         const { data: { user }, error: authError } = await supabase.auth.getUser();
@@ -28,7 +27,7 @@ export async function POST(request: NextRequest) {
         // 1. Validate Prices & Check Stock
         const productIds = items.map((i: any) => i.id);
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        const { data: dbProducts, error: productsError } = await (supabase as any)
+        const { data: dbProducts, error: productsError } = await (adminClient as any)
             .from('products')
             .select('id, price_thb, stock_quantity, name')
             .in('id', productIds);
@@ -118,7 +117,7 @@ export async function POST(request: NextRequest) {
                 if (dbProduct && dbProduct.stock_quantity !== null) {
                     const newStock = dbProduct.stock_quantity - item.quantity;
                     // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                    await (supabase as any)
+                    await (adminClient as any)
                         .from('products')
                         .update({ stock_quantity: newStock })
                         .eq('id', item.id);
@@ -162,7 +161,7 @@ export async function POST(request: NextRequest) {
 
         // Update order with Stripe session ID
         // eslint-disable-next-line @typescript-eslint/no-explicit-any
-        await (supabase as any)
+        await (adminClient as any)
             .from('orders')
             .update({ stripe_session_id: session.id })
             .eq('id', order.id);

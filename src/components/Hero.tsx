@@ -4,40 +4,56 @@ import { motion, useReducedMotion } from "framer-motion";
 import { Link } from "@/i18n/routing";
 import { useTranslations } from "next-intl";
 import Image from "next/image";
+import { useEffect, useState } from "react";
 
 export function Hero() {
     const t = useTranslations('Hero');
     const shouldReduceMotion = useReducedMotion();
+    const [isDesktop, setIsDesktop] = useState(false);
+    const showAnimatedDecor = !shouldReduceMotion;
+
+    useEffect(() => {
+        const media = window.matchMedia("(min-width: 1024px)");
+        const update = () => setIsDesktop(media.matches);
+
+        update();
+        media.addEventListener("change", update);
+        return () => media.removeEventListener("change", update);
+    }, []);
+
+    const enableMotion = showAnimatedDecor && isDesktop;
+
     return (
-        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20">
+        <section className="relative min-h-screen w-full flex items-center justify-center overflow-hidden pt-20 bg-white">
             {/* Background Gradient */}
             <div className="absolute inset-0 bg-gradient-to-b from-aura-sand via-white to-aura-sand/50 -z-20" />
+            <div className="absolute inset-0 hidden md:block bg-[radial-gradient(circle_at_20%_20%,rgba(45,212,191,0.08),transparent_50%),radial-gradient(circle_at_80%_0%,rgba(251,113,133,0.08),transparent_50%)] -z-20" />
 
-            {/* Decorative Blobs */}
+            {/* Decorative Blobs (muted on mobile/reduced motion) */}
             <motion.div
-                animate={shouldReduceMotion ? undefined : {
-                    scale: [1, 1.2, 1],
-                    opacity: [0.3, 0.5, 0.3]
-                }}
-                transition={shouldReduceMotion ? undefined : {
-                    duration: 8,
+                animate={enableMotion ? {
+                    scale: [1, 1.12, 1],
+                    opacity: [0.25, 0.45, 0.25]
+                } : undefined}
+                transition={enableMotion ? {
+                    duration: 12,
                     repeat: Infinity,
                     ease: "easeInOut"
-                }}
-                className="motion-soft absolute top-[-10%] left-[-10%] w-[600px] h-[600px] bg-aura-teal/20 rounded-full blur-[120px] -z-10"
+                } : undefined}
+                className="motion-soft hidden md:block absolute top-[-12%] left-[-8%] w-[420px] h-[420px] bg-aura-teal/14 rounded-full blur-[100px] -z-10"
             />
             <motion.div
-                animate={shouldReduceMotion ? undefined : {
-                    scale: [1, 1.1, 1],
-                    opacity: [0.2, 0.4, 0.2]
-                }}
-                transition={shouldReduceMotion ? undefined : {
-                    duration: 10,
+                animate={enableMotion ? {
+                    scale: [1, 1.08, 1],
+                    opacity: [0.18, 0.36, 0.18]
+                } : undefined}
+                transition={enableMotion ? {
+                    duration: 14,
                     repeat: Infinity,
                     ease: "easeInOut",
-                    delay: 1
-                }}
-                className="motion-soft absolute bottom-[-10%] right-[-10%] w-[600px] h-[600px] bg-aura-coral/15 rounded-full blur-[120px] -z-10"
+                    delay: 1.2
+                } : undefined}
+                className="motion-soft hidden md:block absolute bottom-[-12%] right-[-8%] w-[420px] h-[420px] bg-aura-coral/12 rounded-full blur-[100px] -z-10"
             />
 
             <div className="container mx-auto px-4 text-center z-10">
@@ -98,7 +114,7 @@ export function Hero() {
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: shouldReduceMotion ? 1 : 1 }}
                     transition={{ delay: 0.8, duration: 1 }}
-                    className="mt-16 relative w-full max-w-5xl mx-auto rounded-3xl overflow-hidden shadow-2xl"
+                    className="mt-16 relative w-full max-w-4xl mx-auto rounded-3xl overflow-hidden shadow-xl border border-white/60"
                 >
                     <div className="aspect-[16/9] relative">
                         <Image
@@ -109,7 +125,7 @@ export function Hero() {
                             sizes="(max-width: 1024px) 100vw, 1024px"
                             className="object-cover"
                         />
-                        <div className="absolute inset-0 bg-gradient-to-t from-black/30 to-transparent" />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/35 via-black/10 to-transparent" />
                     </div>
                 </motion.div>
             </div>

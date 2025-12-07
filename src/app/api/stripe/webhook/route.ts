@@ -1,19 +1,18 @@
 import { NextRequest, NextResponse } from 'next/server';
 import Stripe from 'stripe';
-import { createClient } from '@/lib/supabase/server';
+import { createAdminClient } from '@/lib/supabase/admin';
+import { getStripeClient } from '@/lib/stripe';
 
 export const runtime = 'nodejs';
 
-const stripe = new Stripe(process.env.STRIPE_SECRET_KEY || 'dummy_key_for_build', {
-    apiVersion: '2024-10-28.acacia' as any,
-});
+const stripe = getStripeClient();
 
 async function updateOrderToPaid(orderId: string, session: Stripe.Checkout.Session) {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const { data: order, error } = await (supabase as any)
         .from('orders')
-        .select('id, payment_status, status, items')
+        .select('id, payment_status, status, items, stripe_payment_intent')
         .eq('id', orderId)
         .single();
 
@@ -22,7 +21,12 @@ async function updateOrderToPaid(orderId: string, session: Stripe.Checkout.Sessi
         return;
     }
 
-    if (order.payment_status === 'paid') return;
+    if (order.payment_status === 'paid' || order.status === 'confirmed') return;
+
+    const paymentIntent = typeof session.payment_intent === 'string' ? session.payment_intent : null;
+    if (order.stripe_payment_intent && paymentIntent && order.stripe_payment_intent === paymentIntent) {
+        return;
+    }
 
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
     const items = (order.items || []) as any[];
@@ -56,14 +60,29 @@ async function updateOrderToPaid(orderId: string, session: Stripe.Checkout.Sessi
         .update({
             payment_status: 'paid',
             status: 'confirmed',
-            stripe_payment_intent: typeof session.payment_intent === 'string' ? session.payment_intent : null,
+            stripe_payment_intent: paymentIntent,
         })
         .eq('id', orderId);
 }
 
 async function markOrderFailed(orderId: string, status: string) {
-    const supabase = await createClient();
+    const supabase = createAdminClient();
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { data: order, error } = await (supabase as any)
+        .from('orders')
+        .select('payment_status, status')
+        .eq('id', orderId)
+        .single();
+
+    if (error || !order) {
+        console.error('Order fetch for failure update error', error);
+        return;
+    }
+
+    if (order.payment_status === 'paid' || order.status === 'confirmed') {
+        return;
+    }
+
     await (supabase as any)
         .from('orders')
         .update({
@@ -71,6 +90,45 @@ async function markOrderFailed(orderId: string, status: string) {
             status: 'cancelled',
         })
         .eq('id', orderId);
+}
+
+async function hasProcessedEvent(stripeEventId: string, paymentIntentId?: string | null) {
+    const supabase = createAdminClient();
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const query = (supabase as any)
+        .from('webhook_events')
+        .select('id')
+        .or(paymentIntentId
+            ? `stripe_event_id.eq.${stripeEventId},payment_intent_id.eq.${paymentIntentId}`
+            : `stripe_event_id.eq.${stripeEventId}`)
+        .maybeSingle();
+
+    const { data, error } = await query;
+
+    if (error) {
+        console.error('Webhook idempotency lookup failed', error);
+    }
+
+    return Boolean(data);
+}
+
+async function recordEvent(stripeEventId: string, paymentIntentId: string | null, orderId: string | null, eventType: string, status: string) {
+    const supabase = createAdminClient();
+    const conflictTarget = paymentIntentId ? 'payment_intent_id' : 'stripe_event_id';
+    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+    const { error } = await (supabase as any)
+        .from('webhook_events')
+        .upsert({
+            stripe_event_id: stripeEventId,
+            payment_intent_id: paymentIntentId,
+            order_id: orderId,
+            event_type: eventType,
+            status,
+        }, { onConflict: conflictTarget });
+
+    if (error) {
+        console.error('Failed to record webhook event', error);
+    }
 }
 
 export async function POST(req: NextRequest) {
@@ -93,6 +151,20 @@ export async function POST(req: NextRequest) {
     }
 
     try {
+        const paymentIntentId = (() => {
+            if ('payment_intent' in event.data.object && typeof event.data.object.payment_intent === 'string') {
+                return event.data.object.payment_intent;
+            }
+            if ('id' in event.data.object && (event.data.object as Stripe.PaymentIntent).object === 'payment_intent') {
+                return (event.data.object as Stripe.PaymentIntent).id;
+            }
+            return null;
+        })();
+
+        if (await hasProcessedEvent(event.id, paymentIntentId)) {
+            return NextResponse.json({ skipped: true, reason: 'duplicate_event' });
+        }
+
         switch (event.type) {
             case 'checkout.session.completed': {
                 const session = event.data.object as Stripe.Checkout.Session;
@@ -100,6 +172,7 @@ export async function POST(req: NextRequest) {
                 if (orderId) {
                     await updateOrderToPaid(orderId, session);
                 }
+                await recordEvent(event.id, typeof session.payment_intent === 'string' ? session.payment_intent : null, orderId || null, event.type, 'processed');
                 break;
             }
             case 'checkout.session.expired': {
@@ -108,6 +181,7 @@ export async function POST(req: NextRequest) {
                 if (orderId) {
                     await markOrderFailed(orderId, 'expired');
                 }
+                await recordEvent(event.id, typeof session.payment_intent === 'string' ? session.payment_intent : null, orderId || null, event.type, 'expired');
                 break;
             }
             case 'payment_intent.payment_failed': {
@@ -116,6 +190,7 @@ export async function POST(req: NextRequest) {
                 if (orderId) {
                     await markOrderFailed(orderId, 'failed');
                 }
+                await recordEvent(event.id, intent.id, orderId || null, event.type, 'failed');
                 break;
             }
             default:
