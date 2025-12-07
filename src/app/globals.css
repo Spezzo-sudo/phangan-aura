@@ -23,7 +23,7 @@
 
 @media (prefers-color-scheme: dark) {
   :root {
-    /* We stick to light theme for the "Island Day" vibe for now, 
+    /* We stick to light theme for the "Island Day" vibe for now,
        but could add dark mode later. Overriding system dark mode to keep the design consistent. */
     --background: #FDFBF7;
     --foreground: #111827;
@@ -42,4 +42,24 @@ body {
     radial-gradient(at 100% 100%, rgba(42, 157, 143, 0.08) 0px, transparent 50%),
     radial-gradient(at 0% 100%, rgba(212, 163, 115, 0.15) 0px, transparent 50%);
   background-attachment: fixed;
+}
+
+@media (max-width: 640px) {
+  body {
+    background-image: none;
+    background-color: #ffffff;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    animation-duration: 0.001ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.001ms !important;
+    scroll-behavior: auto !important;
+  }
+
+  .motion-soft {
+    display: none;
+  }
 }

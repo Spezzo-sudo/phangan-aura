@@ -55,10 +55,13 @@ supabase/.temp
 # Development documentation (keep locally, exclude from repo)
 *.md
 !README.md
+!docs/SUPABASE_DATA_GUIDE.md
+!docs/system-review.md
 
 # Standalone SQL files (migrations are tracked in supabase/migrations/)
 *.sql
 !supabase/migrations/*.sql
+!docs/supabase-sample-data.sql
 
 # Debug and test files
 debug*.js

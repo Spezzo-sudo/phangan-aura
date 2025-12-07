@@ -56,7 +56,8 @@ export default function ShopPage() {
             id: product.id,
             name: getLocalizedContent(product.name, locale),
             price: product.price_thb,
-            image: product.image_url || undefined
+            image: product.image_url || undefined,
+            maxQuantity: product.stock_quantity ?? undefined,
         });
         setOpen(true);
     };

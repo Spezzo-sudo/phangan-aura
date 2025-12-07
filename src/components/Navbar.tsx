@@ -97,12 +97,13 @@ export function Navbar() {
                         {/* Cart Button (Desktop) */}
                         <button
                             onClick={toggleCart}
-                            className="hidden md:flex relative items-center justify-center w-10 h-10 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-aura-teal"
+                            className="hidden md:flex relative items-center justify-center w-11 h-11 rounded-full hover:bg-gray-100 transition-colors text-gray-600 hover:text-aura-teal focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aura-teal focus-visible:ring-offset-2"
                             aria-label="Shopping cart"
+                            aria-expanded={false}
                         >
                             <ShoppingCart size={20} />
                             {totalItems() > 0 && (
-                                <span className="absolute -top-1 -right-1 bg-aura-teal text-white text-xs font-bold rounded-full w-5 h-5 flex items-center justify-center">
+                                <span className="absolute -top-1.5 -right-1.5 bg-aura-teal text-white text-xs font-bold rounded-full w-6 h-6 flex items-center justify-center border border-white shadow-md">
                                     {totalItems()}
                                 </span>
                             )}
@@ -113,7 +114,9 @@ export function Navbar() {
                             <div className="relative hidden md:block">
                                 <button
                                     onClick={() => setShowDropdown(!showDropdown)}
-                                    className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-aura-teal transition-colors"
+                                    className="flex items-center gap-2 text-sm font-medium text-gray-700 hover:text-aura-teal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aura-teal focus-visible:ring-offset-2"
+                                    aria-expanded={showDropdown}
+                                    aria-controls="navbar-user-menu"
                                 >
                                     <div className="w-8 h-8 rounded-full bg-aura-teal/10 flex items-center justify-center text-aura-teal border border-aura-teal/20">
                                         {user.avatar_url ? (
@@ -132,6 +135,7 @@ export function Navbar() {
                                             animate={{ opacity: 1, y: 0, scale: 1 }}
                                             exit={{ opacity: 0, y: 10, scale: 0.95 }}
                                             className="absolute right-0 mt-2 w-48 bg-white rounded-xl shadow-xl border border-gray-100 overflow-hidden py-1"
+                                            id="navbar-user-menu"
                                         >
                                             <Link
                                                 href={getDashboardLink()}
@@ -172,9 +176,11 @@ export function Navbar() {
 
                         {/* Mobile Toggle */}
                         <button
-                            className="md:hidden text-gray-600 hover:text-aura-teal transition-colors p-1"
+                            className="md:hidden text-gray-600 hover:text-aura-teal transition-colors p-1 focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aura-teal focus-visible:ring-offset-2"
                             onClick={() => setIsOpen(!isOpen)}
                             aria-label="Toggle menu"
+                            aria-expanded={isOpen}
+                            aria-controls="mobile-navigation"
                         >
                             {isOpen ? <X size={24} /> : <Menu size={24} />}
                         </button>
@@ -190,6 +196,7 @@ export function Navbar() {
                         animate={{ opacity: 1, y: 0 }}
                         exit={{ opacity: 0, y: -20 }}
                         className="fixed inset-0 z-40 bg-aura-sand/95 backdrop-blur-xl pt-32 px-6 md:hidden flex flex-col"
+                        id="mobile-navigation"
                     >
                         <div className="flex flex-col gap-6 text-center items-center">
                             <Link
@@ -224,12 +231,14 @@ export function Navbar() {
                             {/* Cart Button (Mobile) */}
                             <button
                                 onClick={() => { setIsOpen(false); toggleCart(); }}
-                                className="relative flex items-center gap-2 text-xl font-medium text-gray-800 hover:text-aura-teal transition-colors"
+                                className="relative flex items-center gap-2 text-xl font-medium text-gray-800 hover:text-aura-teal transition-colors focus-visible:outline-none focus-visible:ring-2 focus-visible:ring-aura-teal focus-visible:ring-offset-2"
+                                aria-label="Open cart"
+                                aria-expanded={false}
                             >
                                 <ShoppingCart size={20} />
                                 <span>{t('cart')}</span>
                                 {totalItems() > 0 && (
-                                    <span className="bg-aura-teal text-white text-xs font-bold rounded-full px-2 py-0.5">
+                                    <span className="bg-aura-teal text-white text-xs font-bold rounded-full px-2.5 py-1 border border-white shadow">
                                         {totalItems()}
                                     </span>
                                 )}

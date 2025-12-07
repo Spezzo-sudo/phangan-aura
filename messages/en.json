@@ -198,6 +198,9 @@
         "secure_checkout": "Secure checkout powered by Stripe",
         "pay_btn": "Pay {amount} ฿",
         "free_delivery_note": "Free delivery on Koh Phangan",
+        "status_validating": "Validating cart, prices, and stock...",
+        "status_creating_session": "Locking in your order and starting secure checkout...",
+        "status_redirecting": "Redirecting to Stripe for payment...",
         "alert_fill_info": "Please fill in your name and email",
         "alert_fail": "Checkout failed. Please try again."
     },

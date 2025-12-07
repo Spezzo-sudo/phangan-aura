@@ -198,6 +198,9 @@
         "secure_checkout": "ชำระเงินปลอดภัยด้วย Stripe",
         "pay_btn": "ชำระ {amount} ฿",
         "free_delivery_note": "จัดส่งฟรีบนเกาะพะงัน",
+        "status_validating": "กำลังตรวจสอบตะกร้า ราคา และสต็อก...",
+        "status_creating_session": "กำลังยืนยันคำสั่งซื้อและเตรียมการชำระเงิน...",
+        "status_redirecting": "กำลังเปลี่ยนเส้นทางไปยัง Stripe เพื่อชำระเงิน...",
         "alert_fill_info": "กรุณากรอกชื่อและอีเมล",
         "alert_fail": "การชำระเงินล้มเหลว โปรดลองอีกครั้ง"
     },
