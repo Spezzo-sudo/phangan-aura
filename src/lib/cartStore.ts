@@ -7,6 +7,7 @@ export interface CartItem {
     price: number;
     image?: string;
     quantity: number;
+    maxQuantity?: number;
 }
 
 interface CartState {
@@ -15,6 +16,7 @@ interface CartState {
     addItem: (item: Omit<CartItem, 'quantity'>) => void;
     removeItem: (id: string) => void;
     updateQuantity: (id: string, delta: number) => void;
+    setItems: (items: CartItem[]) => void;
     clearCart: () => void;
     toggleCart: () => void;
     setOpen: (open: boolean) => void;
@@ -32,12 +34,27 @@ export const useCartStore = create<CartState>()(
                 const existingItem = state.items.find(i => i.id === newItem.id);
                 if (existingItem) {
                     return {
-                        items: state.items.map(i =>
-                            i.id === newItem.id ? { ...i, quantity: i.quantity + 1 } : i
-                        )
+                        items: state.items.map(i => {
+                            if (i.id !== newItem.id) return i;
+
+                            const tentativeQuantity = i.quantity + 1;
+                            const cappedQuantity = i.maxQuantity
+                                ? Math.min(tentativeQuantity, i.maxQuantity)
+                                : tentativeQuantity;
+
+                            return { ...i, quantity: cappedQuantity };
+                        })
                     };
                 }
-                return { items: [...state.items, { ...newItem, quantity: 1 }] };
+                return {
+                    items: [
+                        ...state.items,
+                        {
+                            ...newItem,
+                            quantity: newItem.maxQuantity ? Math.min(1, newItem.maxQuantity) : 1,
+                        }
+                    ]
+                };
             }),
 
             removeItem: (id) => set((state) => ({
@@ -47,12 +64,19 @@ export const useCartStore = create<CartState>()(
             updateQuantity: (id, delta) => set((state) => ({
                 items: state.items.map(i => {
                     if (i.id === id) {
-                        const newQuantity = Math.max(1, i.quantity + delta);
-                        return { ...i, quantity: newQuantity };
+                        const desiredQuantity = i.quantity + delta;
+                        const boundedQuantity = Math.max(1, desiredQuantity);
+                        const cappedQuantity = i.maxQuantity
+                            ? Math.min(boundedQuantity, i.maxQuantity)
+                            : boundedQuantity;
+
+                        return { ...i, quantity: cappedQuantity };
                     }
                     return i;
                 })
             })),
+
+            setItems: (items) => set({ items }),
 
             clearCart: () => set({ items: [] }),
 

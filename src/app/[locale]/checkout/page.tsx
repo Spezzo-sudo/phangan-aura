@@ -10,7 +10,7 @@ import { useTranslations } from "next-intl";
 
 export default function CheckoutPage() {
     const router = useRouter();
-    const { items, totalPrice, clearCart } = useCartStore();
+    const { items, totalPrice, setItems } = useCartStore();
     const [loading, setLoading] = useState(false);
     const [user, setUser] = useState<{ email: string, full_name: string | null } | null>(null);
     const t = useTranslations('Checkout');
@@ -66,16 +66,55 @@ export default function CheckoutPage() {
         setLoading(true);
 
         try {
+            const validationResponse = await fetch('/api/cart/validate', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ items }),
+            });
+
+            const validationData = await validationResponse.json();
+
+            if (!validationResponse.ok) {
+                const message = validationData?.error || t('alert_fail');
+                alert(message);
+                setLoading(false);
+                if (validationData?.items) {
+                    setItems(validationData.items.map((item: any) => ({
+                        id: item.id,
+                        name: item.name,
+                        price: item.price_thb,
+                        quantity: item.quantity,
+                        maxQuantity: item.maxQuantity,
+                    })));
+                }
+                return;
+            }
+
+            const sanitizedItems = validationData.items.map((item: any) => ({
+                id: item.id,
+                name: item.name,
+                price_thb: item.price_thb,
+                quantity: item.quantity,
+            }));
+
+            // keep cart in sync with validated values for UI feedback
+            setItems(validationData.items.map((item: any) => ({
+                id: item.id,
+                name: item.name,
+                price: item.price_thb,
+                quantity: item.quantity,
+                maxQuantity: item.maxQuantity,
+            })));
+
+            if (validationData?.messages?.length) {
+                alert(validationData.messages.join('\n'));
+            }
+
             const response = await fetch('/api/checkout', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({
-                    items: items.map(item => ({
-                        id: item.id,
-                        name: item.name,
-                        price_thb: item.price,  // CartItem has 'price' not 'price_thb'
-                        quantity: item.quantity
-                    })),
+                    items: sanitizedItems,
                     customerInfo,
                     paymentMethod: 'card'  // Force card payment in shop
                 })
@@ -93,8 +132,6 @@ export default function CheckoutPage() {
             } else {
                 throw new Error('No checkout URL received');
             }
-
-            clearCart();
 
         } catch (error) {
             console.error('Checkout error:', error);

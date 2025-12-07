@@ -110,22 +110,21 @@ export async function POST(request: NextRequest) {
             return NextResponse.json({ error: 'Failed to create order' }, { status: 500 });
         }
 
-        // 2. Deduct Stock (Optimistic)
-        for (const item of validatedItems) {
-            // eslint-disable-next-line @typescript-eslint/no-explicit-any
-            const dbProduct = dbProducts.find((p: any) => p.id === item.id);
-            if (dbProduct && dbProduct.stock_quantity !== null) {
-                const newStock = dbProduct.stock_quantity - item.quantity;
-                // eslint-disable-next-line @typescript-eslint/no-explicit-any
-                await (supabase as any)
-                    .from('products')
-                    .update({ stock_quantity: newStock })
-                    .eq('id', item.id);
-            }
-        }
-
-        // Handle Cash Payment
+        // Handle Cash Payment (immediate capture)
         if (body.paymentMethod === 'cash') {
+            for (const item of validatedItems) {
+                // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                const dbProduct = dbProducts.find((p: any) => p.id === item.id);
+                if (dbProduct && dbProduct.stock_quantity !== null) {
+                    const newStock = dbProduct.stock_quantity - item.quantity;
+                    // eslint-disable-next-line @typescript-eslint/no-explicit-any
+                    await (supabase as any)
+                        .from('products')
+                        .update({ stock_quantity: newStock })
+                        .eq('id', item.id);
+                }
+            }
+
             return NextResponse.json({
                 success: true,
                 orderId: order.id,
